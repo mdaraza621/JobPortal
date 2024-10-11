@@ -1,0 +1,40 @@
+D:\PROJECTS NEW\ProjectBatch1\ProjectBatch1\bin\ProjectBatch1.dll
+D:\PROJECTS NEW\ProjectBatch1\ProjectBatch1\bin\ProjectBatch1.pdb
+D:\PROJECTS NEW\ProjectBatch1\ProjectBatch1\obj\Debug\ProjectBatch1.csprojResolveAssemblyReference.cache
+D:\PROJECTS NEW\ProjectBatch1\ProjectBatch1\obj\Debug\ProjectBatch1.dll
+D:\PROJECTS NEW\ProjectBatch1\ProjectBatch1\obj\Debug\ProjectBatch1.pdb
+D:\ALOKPROJECTS\ProjectBatch1\ProjectBatch1\bin\ProjectBatch1.dll.config
+D:\ALOKPROJECTS\ProjectBatch1\ProjectBatch1\bin\ProjectBatch1.dll
+D:\ALOKPROJECTS\ProjectBatch1\ProjectBatch1\bin\ProjectBatch1.pdb
+D:\ALOKPROJECTS\ProjectBatch1\ProjectBatch1\obj\Debug\ProjectBatch1.csprojAssemblyReference.cache
+D:\ALOKPROJECTS\ProjectBatch1\ProjectBatch1\obj\Debug\ProjectBatch1.csproj.CoreCompileInputs.cache
+D:\ALOKPROJECTS\ProjectBatch1\ProjectBatch1\obj\Debug\ProjectBatch1.dll
+D:\ALOKPROJECTS\ProjectBatch1\ProjectBatch1\obj\Debug\ProjectBatch1.pdb
+D:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.dll.config
+D:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.dll
+D:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.pdb
+D:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.csprojAssemblyReference.cache
+D:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.csproj.CoreCompileInputs.cache
+D:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.dll
+D:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.pdb
+F:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.dll.config
+F:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.dll
+F:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.pdb
+F:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.csprojAssemblyReference.cache
+F:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.csproj.CoreCompileInputs.cache
+F:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.dll
+F:\ALOKSIR\ALOK_TRAINING\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.pdb
+F:\ALOKSIR\PROJECTS\MY_PROJECTS\ASP_JOB_PORTAL\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.dll.config
+F:\ALOKSIR\PROJECTS\MY_PROJECTS\ASP_JOB_PORTAL\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.dll
+F:\ALOKSIR\PROJECTS\MY_PROJECTS\ASP_JOB_PORTAL\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.pdb
+F:\ALOKSIR\PROJECTS\MY_PROJECTS\ASP_JOB_PORTAL\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.csprojAssemblyReference.cache
+F:\ALOKSIR\PROJECTS\MY_PROJECTS\ASP_JOB_PORTAL\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.csproj.CoreCompileInputs.cache
+F:\ALOKSIR\PROJECTS\MY_PROJECTS\ASP_JOB_PORTAL\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.dll
+F:\ALOKSIR\PROJECTS\MY_PROJECTS\ASP_JOB_PORTAL\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.pdb
+D:\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.dll.config
+D:\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.dll
+D:\ProjectBatch1_complete\ProjectBatch1\bin\ProjectBatch1.pdb
+D:\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.csproj.AssemblyReference.cache
+D:\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.csproj.CoreCompileInputs.cache
+D:\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.dll
+D:\ProjectBatch1_complete\ProjectBatch1\obj\Debug\ProjectBatch1.pdb

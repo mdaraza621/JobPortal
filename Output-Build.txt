@@ -1,0 +1,3 @@
+﻿1>------ Build started: Project: ProjectBatch1, Configuration: Debug Any CPU ------
+1>  ProjectBatch1 -> D:\PROJECTS NEW\ProjectBatch1\ProjectBatch1\bin\ProjectBatch1.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

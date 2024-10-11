@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="default.master.cs" Inherits="ProjectBatch1._default" %>
+<%@ Register Src="~/Header.ascx" TagName="myheader" TagPrefix="wuc" %>
+<%@ Register Src="~/Footer.ascx" TagName="myfooter" TagPrefix="wuc" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <script src="jquery.js"></script>
+    <link href="menu.css" rel="stylesheet" />
+    <script src="menu.js"></script>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table>
+                <tr>
+                    <td>
+                        <wuc:myheader ID="h1" runat="server"></wuc:myheader>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="menu">
+                            <ul class="menu">
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                     <td style="height:300px;vertical-align:top">
+                        <center>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder></center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <wuc:myfooter ID="f1" runat="server"></wuc:myfooter>
+                    </td>
+                </tr>
+            </table>
+    </div>
+    </form>
+</body>
+</html>

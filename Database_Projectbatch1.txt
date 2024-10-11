@@ -1,0 +1,815 @@
+Create Database ProjectBatch1
+use ProjectBatch1
+
+CREATE TABLE [dbo].[Admin](
+	[adminid] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NULL,
+	[email] [varchar](50) NULL,
+	[password] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[adminid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+---------------------------------------
+CREATE TABLE [dbo].[JobProfiles](
+	[jpid] [int] IDENTITY(1,1) NOT NULL,
+	[jpname] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[jpid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+---------------------------------------------------
+CREATE TABLE [dbo].[Recruiter](
+	[cid] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NULL,
+	[url] [varchar](50) NULL,
+	[address] [varchar](50) NULL,
+	[hr] [varchar](50) NULL,
+	[email] [varchar](50) NULL,
+	[password] [varchar](50) NULL,
+	[contactno] [varchar](50) NULL,
+	[usertype] [int] NULL DEFAULT ((0)),
+	[country] [int] NULL,
+	[state] [int] NULL,
+	[city] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[cid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+-------------------------------------------------
+
+CREATE TABLE [dbo].[Reg](
+	[rid] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NULL,
+	[email] [varchar](50) NULL,
+	[password] [varchar](50) NULL,
+	[UserType] [int] NULL DEFAULT ((0)),
+	[ugender] [int] NULL,
+	[uqualification] [int] NULL,
+	[ujobtitle] [int] NULL,
+	[country] [int] NULL,
+	[state] [int] NULL,
+	[city] [int] NULL,
+	[Skills] [varchar](100) NULL,
+	[photo] [varchar](100) NULL,
+	[resumee] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[rid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+--------------------------------------------
+
+CREATE TABLE [dbo].[Skills](
+	[skid] [int] IDENTITY(1,1) NOT NULL,
+	[jpid] [int] NULL,
+	[skname] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[skid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+-----------------------------------------------
+
+CREATE TABLE [dbo].[tblcity](
+	[cityid] [int] IDENTITY(1,1) NOT NULL,
+	[stateid] [int] NULL,
+	[cityname] [varchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+-----------------------------------------
+
+CREATE TABLE [dbo].[tblcountry](
+	[countryid] [int] IDENTITY(1,1) NOT NULL,
+	[countryname] [varchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+
+---------------------------------------------
+CREATE TABLE [dbo].[tbljobpost](
+	[jobid] [int] IDENTITY(1,1) NOT NULL,
+	[jobtitle] [int] NULL,
+	[minexp] [int] NULL,
+	[maxexp] [int] NULL,
+	[minsalary] [int] NULL,
+	[maxsalary] [int] NULL,
+	[noofvac] [int] NULL,
+	[comment] [varchar](2000) NULL,
+	[companyid] [int] NULL,
+	[usertype] [int] NULL DEFAULT ((0)),
+PRIMARY KEY CLUSTERED 
+(
+	[jobid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+--------------------------------------------
+
+CREATE TABLE [dbo].[tblQualification](
+	[qid] [int] IDENTITY(1,1) NOT NULL,
+	[qname] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[qid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+----------------------------------------------
+
+CREATE TABLE [dbo].[tblstate](
+	[stateid] [int] IDENTITY(1,1) NOT NULL,
+	[countryid] [int] NULL,
+	[statename] [varchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+-----------------------------PROCEDURES-----------------------------------------------------
+
+ALTER proc [dbo].[sp_Admin]
+@email varchar(50),
+@password varchar(50)
+as
+begin
+select * from Admin where email=@email and password=@password
+end
+
+---------------------
+
+ALTER proc [dbo].[sp_Recruiter]
+@action varchar(50),
+@cid int=0,
+@name varchar(50)=null,
+@url varchar(50)=null,
+@address varchar(50)=null,
+@hr varchar(50)=null,
+@email varchar(50)=null,
+@password varchar(50)=null,
+@newpassword varchar(50)=null,
+@contactno varchar(50)=null,
+@country int=0,
+@state int=0,
+@city int=0
+as
+begin
+	if(@action='insert')
+		begin
+			insert into Recruiter(name,url,address,hr,email,password,contactno,country,state,city)
+			values(@name,@url,@address,@hr,@email,@password,@contactno,@country,@state,@city)
+		end
+	else if(@action='checkrecruiter')
+		begin
+			select * from Recruiter where email=@email
+		end
+	else if(@action='select')
+		begin
+			select * from Recruiter
+			join tblcountry on Recruiter.country=tblcountry.countryid
+			join tblState on Recruiter.state=tblstate.stateid
+			join tblcity on Recruiter.city = tblcity.cityid
+		end
+	else if(@action='SingleSelect')
+		begin
+			select * from Recruiter
+			join tblcountry on Recruiter.country=tblcountry.countryid
+			join tblState on Recruiter.state=tblstate.stateid
+			join tblcity on Recruiter.city = tblcity.cityid
+			where cid=@cid
+		end
+	else if(@action='update')
+		begin
+			update Recruiter set name=@name,url=@url,address=@address,hr=@hr,email=@email,
+			password=@password,contactno=@contactno,country=@country,state=@state,city=@city
+			where cid=@cid
+		end
+	else if(@action='delete')
+		begin
+			delete from Recruiter where cid=@cid 
+		end
+	else if(@action='edit')
+		begin
+			select * from Recruiter where cid=@cid 
+		end
+	else if(@action='login')
+		begin
+			select * from Recruiter where email=@email and password=@password and usertype=1
+		end
+	else if(@action='changepassword')
+		begin
+			update recruiter set password=@newpassword where cid=@cid and password=@password 
+		end
+	else if(@action='apr')
+			begin
+			declare @UT int
+			select @UT=usertype from recruiter where cid=@cid
+				if(@UT=0)	
+					begin
+						update recruiter set usertype=1 where cid=@cid
+					end
+				else
+					begin
+						update recruiter set usertype=0 where cid=@cid
+					end
+		end
+end
+
+
+
+
+--------------------------
+
+ALTER proc [dbo].[sp_Reg]
+
+@action varchar(50),
+
+@rid int=0,
+
+@name varchar(50)=null,
+
+@email varchar(50)=null,
+
+@password varchar(50)=null,
+
+@newpassword varchar(50)=null,
+
+@ugender int=0,
+
+@uqualification int=0,
+
+@ujobtitle int=0,
+
+@country int=0,
+
+@state int=0,
+
+@city int=0,
+@Skills varchar(100)=null,
+@photo varchar(100)=null,
+@resumee varchar(100)=null
+
+as
+
+begin
+
+	if(@action='insert')
+
+		begin
+
+			insert into Reg(name,email,password,ugender,uqualification,ujobtitle,country,state,city,skills,photo,resumee)
+
+			values(@name,@email,@password,@ugender,@uqualification,@ujobtitle,@country,@state,@city,@skills,@photo,@resumee)
+
+		end
+	else if(@action='checkuser')
+		begin
+			select * from Reg where email=@email
+		end
+
+	else if(@action='update')
+
+		begin
+
+			update Reg set name=@name,email=@email,password=@password,ugender=@ugender,uqualification=@uqualification,
+
+			ujobtitle=@ujobtitle,country=@country,state=@state,city=@city,skills=@skills,photo=@photo,resumee=@resumee
+
+			where rid=@rid
+
+		end
+
+	else if(@action='select')
+
+		begin
+
+			select * from Reg
+
+			join tblcountry on reg.country=tblcountry.countryid
+
+			join tblState on reg.state=tblstate.stateid
+
+			join tblcity on reg.city = tblcity.cityid
+
+			join jobprofiles on reg.ujobtitle=jobprofiles.jpid
+
+			join tblqualification on reg.uqualification=tblqualification.qid
+
+
+
+		end
+
+	else if(@action='SingleUser')
+
+		begin
+
+			select * from Reg
+
+			join tblcountry on reg.country=tblcountry.countryid
+
+			join tblState on reg.state=tblstate.stateid
+
+			join tblcity on reg.city = tblcity.cityid
+
+			join jobprofiles on reg.ujobtitle=jobprofiles.jpid
+
+			join tblqualification on reg.uqualification=tblqualification.qid
+
+			where rid=@rid
+
+		end
+
+	else if(@action='login')
+
+		begin
+
+			select * from Reg where email=@email and password=@password and usertype=1
+
+		end
+
+	else if(@action='changepassword')
+
+		begin
+
+			update Reg set password=@newpassword where rid=@rid and password=@password
+
+		end
+
+	else if(@action='edit')
+
+		begin
+
+			select * from Reg where rid=@rid
+
+		end
+
+	else if(@action='delete')
+
+		begin
+
+			delete from Reg where rid=@rid
+
+		end
+
+	else if(@action='apr')
+
+			begin
+
+			declare @UT int
+
+			select @UT=usertype from Reg where rid=@rid
+
+				if(@UT=0)	
+
+					begin
+
+						update Reg set usertype=1 where rid=@rid
+
+					end
+
+				else
+
+					begin
+
+						update Reg set usertype=0 where rid=@rid
+
+					end
+
+		end
+
+end
+
+
+
+
+
+
+
+
+
+---------------------------------------------
+
+ALTER proc [dbo].[usp_city]
+
+@action int,
+
+@cityid int=0,
+
+@stateid int=0,
+
+@cityname varchar(50)=null
+
+as
+
+begin
+
+	if(@action=1)
+
+		begin
+
+			insert into tblcity(stateid,cityname)values(@stateid,@cityname)
+
+		end
+
+	if(@action=2)
+
+		begin
+
+			select * from tblcity join tblstate on tblcity.stateid=tblstate.stateid join tblcountry on tblstate.countryid=tblcountry.countryid
+			order by countryname,statename
+
+		end
+	if(@action=3)
+
+		begin
+
+			update tblcity set stateid=@stateid, cityname=@cityname where cityid=@cityid
+
+		end
+	if(@action=4)
+
+		begin
+
+			delete from  tblcity where cityid=@cityid
+
+		end
+	if(@action=5)
+
+		begin
+
+			select * from tblcity join tblstate on tblcity.stateid=tblstate.stateid join tblcountry on tblstate.countryid=tblcountry.countryid
+			 where tblcity.cityid=@cityid
+
+		end
+	
+end
+
+-----------------------------------------
+
+ALTER proc [dbo].[usp_country]
+
+@action int,
+
+@countryid int=0,
+
+@countryname varchar(50)=null
+
+as
+
+begin
+
+	if(@action=1)
+
+		begin
+
+			insert into tblcountry(countryname)values(@countryname)
+
+		end
+
+	if(@action=2)
+
+		begin
+
+			select * from tblcountry
+
+		end
+	if(@action=3)
+
+		begin
+
+			update tblcountry set countryname=@countryname where countryid=@countryid
+
+		end
+	if(@action=4)
+
+		begin
+			delete from tblcity where stateid in (select stateid from tblstate where countryid=@countryid)
+			delete from tblstate where countryid=@countryid
+			delete from  tblcountry where countryid=@countryid
+			delete from tbljobpost where companyid in(select cid from recruiter where country=@countryid)
+			delete from Recruiter where country=@countryid
+		end
+end
+
+
+----------------------------------------------
+
+ALTER proc [dbo].[usp_JobProfiles]
+
+@action int,
+
+@jpid int=0,
+
+@jpname varchar(50)=null
+
+as
+
+begin
+
+	if(@action=1)
+
+		begin
+
+			insert into JobProfiles(jpname)values(@jpname)
+
+		end
+
+	if(@action=2)
+
+		begin
+
+			select * from JobProfiles
+
+		end
+	if(@action=3)
+
+		begin
+
+			update JobProfiles set jpname=@jpname where jpid=@jpid
+
+		end
+	if(@action=4)
+
+		begin
+
+			delete from  JobProfiles where jpid=@jpid
+
+		end
+end
+
+---------------------------------------------
+
+
+ALTER proc [dbo].[usp_Qualification]
+@action int,
+@qid int=0,
+@qname varchar(50)=null
+as
+begin
+	if(@action=1)
+		begin
+			insert into tblQualification(qname)values(@qname)
+		end
+	if(@action=2)
+		begin
+			select * from tblQualification
+		end
+	if(@action=3)
+		begin
+			update tblQualification set qname=@qname where qid=@qid
+		end
+	if(@action=4)
+		begin
+			delete from  tblQualification where qid=@qid
+		end
+end
+
+----------------------------------------
+
+
+ALTER proc [dbo].[usp_state]
+
+@action int,
+
+@stateid int=0,
+
+@countryid int=0,
+
+@statename varchar(50)=null
+
+as
+
+begin
+
+	if(@action=1)
+
+		begin
+
+			insert into tblstate(countryid,statename)values(@countryid,@statename)
+
+		end
+
+	if(@action=2)
+
+		begin
+
+			select * from tblcountry join tblstate on tblcountry.countryid=tblstate.countryid
+			order by countryname
+
+		end
+	if(@action=3)
+
+		begin
+
+			update tblstate set countryid=@countryid, statename=@statename where stateid=@stateid
+
+		end
+	if(@action=4)
+
+		begin
+			delete from tblcity where stateid=@stateid
+			delete from  tblstate where stateid=@stateid
+
+		end
+	if(@action=5)
+
+		begin
+
+			select * from  tblstate where stateid=@stateid
+
+		end
+	if(@action=6)
+
+		begin
+
+			select * from  tblstate where countryid=@countryid
+
+		end
+end
+
+
+---------------------------------
+
+ALTER proc [dbo].[usp_tbljobpost]
+
+@action varchar(50)=null,
+
+@ujobtitle int=0,
+
+@companyid int=0,
+
+@jobid int=0,
+
+@jobtitle int=0,
+
+@minexp int=0,
+
+@maxexp int=0,
+
+@minsalary int=0,
+
+@maxsalary int=0,
+
+@noofvac int=0,
+
+@comment varchar(2000)=null
+
+as
+
+begin
+
+	if(@action='selectall')
+
+		begin
+
+			select * from tbljobpost join jobprofiles on tbljobpost.jobtitle=jobprofiles.jpid
+
+        	join Recruiter on tbljobpost.companyid=Recruiter.cid
+
+		end
+
+	else if(@action='Company_email_by_jpid')
+		begin
+			select email from Recruiter where 
+			cid=(select companyid from tbljobpost where jobid=@jobid)
+		end
+
+	else if(@action='selectbycompany')
+
+		begin
+
+			select * from tbljobpost join jobprofiles on tbljobpost.jobtitle=jobprofiles.jpid
+
+        	join Recruiter on tbljobpost.companyid=Recruiter.cid
+
+			where companyid=@companyid
+
+		end
+
+	else if(@action='selectby_jobtitle_and_company')
+
+		begin
+
+			select * from tbljobpost join jobprofiles on tbljobpost.jobtitle=jobprofiles.jpid
+
+			join Recruiter on tbljobpost.companyid=Recruiter.cid
+
+			where jobtitle=@jobtitle and companyid=@companyid
+
+		end
+
+	else if(@action='selectbyjobtitle')
+
+		begin
+
+			select * from tbljobpost join jobprofiles on tbljobpost.jobtitle=jobprofiles.jpid
+
+			join Recruiter on tbljobpost.companyid=Recruiter.cid
+
+			where jobtitle=@ujobtitle and tbljobpost.usertype=1
+
+		end
+
+	else if(@action='insert')
+
+		begin
+
+		    insert into tbljobpost(companyid,jobtitle,minexp,maxexp,minsalary,maxsalary,noofvac,comment)
+
+			values(@companyid,@jobtitle,@minexp,@maxexp,@minsalary,@maxsalary,@noofvac,@comment)
+
+		end
+
+	else if(@action='update')
+
+		begin
+
+			update tbljobpost set jobtitle=@jobtitle,minexp=@minexp,maxexp=@maxexp,
+
+			minsalary=@minsalary,maxsalary=@maxsalary,noofvac=@noofvac,comment=@comment
+
+			where jobid=@jobid
+
+		end
+
+	if(@action='edit')
+
+		begin
+
+			select * from tbljobpost where jobid=@jobid
+
+		end
+
+	else if(@action='delete')
+
+		begin
+
+			delete from tbljobpost where jobid=@jobid
+
+		end
+
+	
+
+	else if(@action='search')
+
+		begin
+
+			select * from tbljobpost join jobprofiles on tbljobpost.jobtitle=jobprofiles.jpid
+
+			join Recruiter on tbljobpost.companyid=Recruiter.cid
+
+			where jobtitle=@ujobtitle and maxsalary > @maxsalary and tbljobpost.usertype=1
+
+		end
+
+	else if(@action='apr')
+
+			begin
+
+			declare @UT int
+
+			select @UT=usertype from tbljobpost where jobid=@jobid
+
+				if(@UT=0)	
+
+					begin
+
+						update tbljobpost set usertype=1 where jobid=@jobid
+
+					end
+
+				else
+
+					begin
+
+						update tbljobpost set usertype=0 where jobid=@jobid
+
+					end
+
+		end
+
+end
+
+
+
+
+
+

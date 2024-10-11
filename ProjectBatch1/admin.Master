@@ -1,0 +1,70 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="ProjectBatch1.admin" %>
+
+<%@ Register Src="~/Header.ascx" TagName="myheader" TagPrefix="wuc" %>
+<%@ Register Src="~/Footer.ascx" TagName="myfooter" TagPrefix="wuc" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <script src="jquery.js"></script>
+    <link href="menu.css" rel="stylesheet" />
+    <script src="menu.js"></script>
+
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <wuc:myheader ID="h1" runat="server"></wuc:myheader>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="menu">
+                            <ul class="menu">
+                                <li><a href="adminhome.aspx" class="parent"><span>Home</span></a></li>
+                                <li><a href="ManageUsers.aspx" class="parent"><span>Manage Users</span></a></li>
+                                <li><a href="ManageRecruiter.aspx" class="parent"><span>Manage Recruiters</span></a></li>
+                                 <li><a href="Admin_managejobposts.aspx" class="parent"><span>Manage Job Posts</span></a></li>
+                                <li><a href="#" class="parent"><span>Manage Master Data</span></a>
+                                    <div>
+                                        <ul>
+                                            <li><a href="Manage_Country.aspx"><span>Managge Country</span></a></li>
+                                            <li><a href="Manage_State.aspx"><span>Managge State</span></a></li>
+                                            <li><a href="Manage_City.aspx"><span>Managge City</span></a></li>
+                                            <li><a href="ManageJobProfiles.aspx"><span>Managge job profile</span></a></li>
+                                            <li><a href="Manage_Skills.aspx"><span>Managge Skills</span></a></li>
+                                            <li><a href="ManageQualification.aspx"><span>Managge Qualification</span></a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href="Logout.aspx" class="parent"><span>Logout</span></a></li>
+                            </ul>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                      <td style="height:300px;vertical-align:top">
+                        <center>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder></center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <wuc:myfooter ID="f1" runat="server"></wuc:myfooter>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </form>
+</body>
+</html>
